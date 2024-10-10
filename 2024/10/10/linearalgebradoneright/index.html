@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/coffee_32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/coffee_16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Linear Algebra Done Right #3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linear Algebra Done Right#3">
+<meta property="og:url" content="http://example.com/2024/10/10/linearalgebradoneright/index.html">
+<meta property="og:site_name" content="goatf1ower1的博客">
+<meta property="og:description" content="Linear Algebra Done Right #3">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-10T13:15:00.000Z">
+<meta property="article:modified_time" content="2024-10-10T13:29:26.201Z">
+<meta property="article:author" content="goatf1ower1">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="线性代数">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/10/10/linearalgebradoneright/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Linear Algebra Done Right#3 | goatf1ower1的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">goatf1ower1的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/10/linearalgebradoneright/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="goatf1ower1">
+      <meta itemprop="description" content=""See you, either in Hell, or Communism."">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="goatf1ower1的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linear Algebra Done Right#3
+        </h1>
+
+        <div class="post-meta">
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-10-10 21:15:00 / 修改时间：21:29:26" itemprop="dateCreated datePublished" datetime="2024-10-10T21:15:00+08:00">2024-10-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="linear-algebra-done-right-3">Linear Algebra Done Right #3</h1>
+
+<span id="more"></span>
+
+<h2 id="chapter-1-c-subspaces-">Chapter 1.C  Subspaces 子空间</h2>
+<p>这一主要讨论的子空间相关的内容，涉及子空间的定义和判定、子空间的和是最小的包含子空间以及直和。</p>
+<h3 id="1-32-definition-subspace-">1.32 Definition <em>subspace</em>  子空间定义</h3>
+<blockquote>
+<p>A subset <strong> <em>U</em> </strong> of <strong> <em>V</em> </strong> is called a <strong> <em>subspace</em> </strong> of <strong> <em>V</em> </strong> if <strong> <em>U</em> </strong> is also a vector space(using the same addition and scalar multiplication as on <strong> <em>V</em> </strong>)</p>
+</blockquote>
+<p>U作为V的子空间自然也满足在V中的加法和乘法 eg1.33</p>
+<h3 id="1-34-conditions-for-a-subspace-">1.34 Conditions for a subspace 满足子空间的条件</h3>
+<blockquote>
+<p>A subset <strong> <em>U</em> </strong> of <strong> <em>V</em> </strong> is a subspace of <strong> <em>V</em> </strong> if and only if <strong> <em>U</em> </strong> satisfies the following three conditions:</p>
+<ul>
+<li><strong>additive identity</strong> : 0 ∈ <strong> <em>U</em> </strong></li><li><strong>closed under addition</strong> : <em>u</em>,<em>w</em> ∈ <strong> <em>U</em> </strong> implies <em>u</em>+<em>v</em> ∈ <strong> <em>U</em> </strong></li><li><strong>closed under scalar multiplication</strong>:<em>a</em> ∈ <strong> <em>F</em> </strong> and <em>u</em> ∈ <strong> <em>U</em> </strong> implies <em>au</em> ∈ <strong> <em>U</em> </strong></li></ul>
+</blockquote>
+<p>The other parts of the definition of a vector space, such as associativity and commutativity, are automatically satisfied for <strong> <em>U</em> </strong> because they hold on the larger space <strong> <em>V</em> </strong>.</p>
+<p>此处证明三个条件非常简单，这里只用满足三个条件便可以证明子空间，至于U中的其他性质，因为U是V的子空间，而V中已经证明过相关性质，所以U自然也满足</p>
+<p>作者在这里举了一些例子，其中包含一些函数子空间的例子，作者在这里强调了微积分部分的线性结构，本质上就是泛函分析，感兴趣可以去原书eg1.35看。</p>
+<h2 id="sums-of-subspaces-">Sums of Subspaces 子空间的和</h2>
+<h3 id="1-36-definition-sum-of-subsets-">1.36 Definition <em>sum of subsets</em> 子空间的和的定义</h3>
+<blockquote>
+<p>Suppose <strong> <em>U₁</em> </strong>,...,<strong> <em>Uₘ</em> </strong>are subsets of <strong> <em>V</em> </strong>. The <strong> <em>sum</em> </strong> of <strong> <em>U₁</em> </strong>,...,<strong> <em>Uₘ</em> </strong>, denoteed <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>, is the set of all possible sums of elements of  <strong> <em>U₁</em> </strong>,...,<strong> <em>Uₘ</em> </strong>. More precisely,<strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong> = {<strong> <em>u₁</em> </strong>+···+<strong> <em>uₘ</em> </strong>:<strong> <em>u₁</em> </strong> ∈ <strong> <em>U₁</em> </strong>,...,<strong> <em>uₘ</em> </strong> ∈ <strong> <em>Uₘ</em> </strong>}.</p>
+</blockquote>
+<p>eg1.37很好理解，eg1.38或许有些难理解，这里解释一下：<br><strong> <em>U</em> </strong> = {<em>x</em>,<em>x</em>,<em>y</em>,<em>y</em> ∈ <strong> <em>F⁴</em> </strong>:<em>x</em>,<em>y</em> ∈ <strong> <em>F⁴</em> </strong>},<strong> <em>W</em> </strong> = {<em>x</em>,<em>x</em>,<em>x</em>,<em>y</em> ∈ <strong> <em>F⁴</em> </strong>:<em>x</em>,<em>y</em> ∈ <strong> <em>F⁴</em> </strong>}<br>这里的 U+W 是如何等于(x,x,y,z)的呢，按正常计算，U+W 应该是（2x,2x,x+y,2y）,在这里令x&#39;=2x,y&#39;=x+y,z&#39;=2y,就可以得出（x&#39;,x&#39;,y&#39;,z&#39;）了，书上并没有这个过程，所有读者可能有点疑惑。</p>
+<h3 id="1-39-sum-of-subspaces-is-the-smallest-containing-subspace-">1.39 Sum of subspaces is the smallest containing subspace 子空间的和是最小的包含子空间</h3>
+<blockquote>
+<p>Suppose <strong> <em>U₁</em> </strong>,...,<strong> <em>Uₘ</em> </strong> are subspaces of <strong> <em>V</em> </strong>. Then <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong> is the smallest subspace of <strong> <em>V</em> </strong> containing <strong> <em>U₁</em> </strong>,...,<strong> <em>Uₘ</em> </strong>.</p>
+</blockquote>
+<p>这里要证明的有三点，一是子空间，二是有包含关系，三是最小。要证子空间很简单，只要满足上面的三个条件即可。令<strong> <em>uⱼ</em> </strong>∈ <strong> <em>Uⱼ</em> </strong>,<strong> <em>wⱼ</em> </strong> ∈ <strong> <em>Uⱼ</em> </strong>, 那么<strong> <em>u₁</em> </strong>+···+<strong> <em>uₘ</em> </strong> ∈ <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>, <strong> <em>w₁</em> </strong>+···+<strong> <em>wₘ</em> </strong> ∈ <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>, 所以（<strong> <em>u₁</em> </strong>+···+<strong> <em>uₘ</em> </strong>） + （<strong> <em>w₁</em> </strong>+···+<strong> <em>wₘ</em> </strong>）=（<strong> <em>u₁</em> </strong> + <strong> <em>w₁</em> </strong>）+···+（<strong> <em>uₘ</em> </strong> + <strong> <em>wₘ</em> </strong>） ∈ <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>, 由此证加法封闭，乘法证法相同；0 ∈ <strong> <em>uⱼ</em> </strong>，则0 +···+ 0 = 0 ∈ <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>，由此加法元也证得，因此满足子空间条件。</p>
+<p>要证包含，只需证（<strong> <em>U₁</em> </strong>∪···∪<strong> <em>Uₘ</em> </strong>）⊂ <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>，只需证(<strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>) ⊃ <strong> <em>U₁</em> </strong> 且···且 (<strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>) ⊃ <strong> <em>Uₘ</em> </strong>，而这是显然的，由此包含关系证得。</p>
+<p>要证最小，书上是这样证明的：</p>
+<blockquote>
+<p>Conversely, every subspace of <strong> <em>V</em> </strong> containing <strong> <em>U₁</em> </strong>,...,<strong> <em>Uₘ</em> </strong>contains<strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>(because subspaces must contain all finite sums of their elements)   </p>
+</blockquote>
+<p>这里可以用数轴的概念来辅助理解，在一条数轴上的[0，1]区间，0是最小元素只需证明0在∀<strong> <em>x</em> </strong> ∈ [0,1]的条件下都满足0 ≦ <strong> <em>x</em> </strong>, 类比到这里就是∀<strong> <em>V</em> </strong>⊃<strong> <em>U₁</em> </strong>∪···∪<strong> <em>Uₘ</em> </strong>，证<strong> <em>V</em> </strong>⊃<strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>⊃<strong> <em>U₁</em> </strong>∪···∪<strong> <em>Uₘ</em> </strong>，我们可以知道<strong> <em>U₁</em> </strong>,...,<strong> <em>Uₘ</em> </strong> ∈ <strong> <em>V</em> </strong>，再由<strong> <em>V</em> </strong>是一个子空间可以推出<strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>∈ <strong> <em>V</em> </strong>从而得出<strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>⊂<strong> <em>V</em> </strong>。</p>
+<h2 id="direct-sums-">Direct Sums  直和</h2>
+<h3 id="1-40-definition-direct-sum-">1.40 Definition direct sum 直和的定义</h3>
+<blockquote>
+<p>Suppose <strong> <em>U₁</em> </strong>,...,<strong> <em>Uₘ</em> </strong>are subspaces of <strong> <em>V</em> </strong>.</p>
+<ul>
+<li>The sum <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong> is called a <strong> <em>direct sum</em> </strong> if each element of <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong> can be written in only one way as a sum <strong> <em>u₁</em> </strong>+···+<strong> <em>uₘ</em> </strong>, where each <strong> <em>uⱼ</em> </strong> is in <strong> <em>Uⱼ</em> </strong>.</li><li>If <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong> is a direct sum, then <strong> <em>U₁</em> </strong>⊕···⊕<strong> <em>Uₘ</em> </strong> denotes <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>, with the ⊕ notation serving as an indication that this is a direct sum.</li></ul>
+</blockquote>
+<p>简单来说，直和的意思就是<strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>中的元素只能由属于<strong> <em>Uⱼ</em> </strong>的元素<strong> <em>uⱼ</em> </strong>来以<strong> <em>u₁</em> </strong>+···+<strong> <em>uₘ</em> </strong>的形式表示，并且这种表示方式只有一种。eg1.41 eg1.42 eg1.43</p>
+<p>如果每次都要用这种方式来判断直和的话就会变得非常麻烦，所以这里就有一种更加简单的判断直和的方式。</p>
+<h3 id="1-44-condition-for-a-direct-sum-">1.44 Condition for a direct sum 满足直和的条件</h3>
+<blockquote>
+<p>Suppose <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong> are subspaces of <strong> <em>V</em> </strong>. Then <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong> is a direct sum if and only if the only way to write 0 as a sum <strong> <em>u₁</em> </strong>+···+<strong> <em>uₘ</em> </strong>, where each <strong> <em>uⱼ</em> </strong> is in <strong> <em>Uⱼ</em> </strong>, is by taking each <strong> <em>uⱼ</em> </strong> equal to 0.</p>
+</blockquote>
+<p>既然判断直和的办法是判断<strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>中的元素只能由<strong> <em>u₁</em> </strong>+···+<strong> <em>uₘ</em> </strong>得出，并且只要是子空间就有加法元0存在，那么只用判断<strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>中的加法元0只能由<strong> <em>u₁</em> </strong>+···+<strong> <em>uₘ</em> </strong>得出，并且每个<strong> <em>uⱼ</em> </strong>的值只能为0。</p>
+<p>证明如下：</p>
+<blockquote>
+<p>Suppose <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong> is a direct sum. </p>
+<p>Now suppose that the only way to write 0 as a sum <strong> <em>u₁</em> </strong>+···+<strong> <em>uₘ</em> </strong>, where each <strong> <em>uⱼ</em> </strong> is in <strong> <em>Uⱼ</em> </strong>, is by taking each <strong> <em>uⱼ</em> </strong> equal to 0. To show that <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong> is a direct sum, let <strong> <em>v</em> </strong> ∈ <strong> <em>U₁</em> </strong>+···+<strong> <em>Uₘ</em> </strong>. We can write</p>
+<center> <strong> <em>v</em> </strong> = <strong> <em>u₁</em> </strong>+···+<strong> <em>uₘ</em> </strong> </center>
+
+<p>for some <strong> <em>u₁</em> </strong> ∈ <strong> <em>U₁</em> </strong>,...,<strong> <em>uₘ</em> </strong> ∈ <strong> <em>Uₘ</em> </strong>. To show that this representation is unique, suppose we also have</p>
+<center> <strong> <em>v</em> </strong> = <strong> <em>v₁</em> </strong>+···+<strong> <em>vₘ</em> </strong>, </center><br>where <strong> <em>v₁</em> </strong> ∈ <strong> <em>U₁</em> </strong>,...,<strong> <em>vₘ</em> </strong> ∈ <strong> <em>Uₘ</em> </strong>. Subtracting these two equations, we have<br><center> 0 = (<strong> <em>u₁</em> </strong> - <strong> <em>v₁</em> </strong>)+···+(<strong> <em>uₘ</em> </strong> - <strong> <em>vₘ</em> </strong>). </center>
+
+<p>Because <strong> <em>u₁</em> </strong> - <strong> <em>v₁</em> </strong> ∈ <strong> <em>U₁</em> </strong>,...,<strong> <em>uₘ</em> </strong> - <strong> <em>vₘ</em> </strong> ∈ <strong> <em>Uₘ</em> </strong>, the equation above implies that each <strong> <em>uⱼ</em> </strong> - <strong> <em>vⱼ</em> </strong> equals 0. Thus <strong> <em>u₁</em> </strong> = <strong> <em>v₁</em> </strong>,...,<strong> <em>uₘ</em> </strong> = <strong> <em>vₘ</em> </strong>, as desired.</p>
+</blockquote>
+<h3 id="1-45-direct-sum-of-two-subspaces-">1.45 Direct sum of two subspaces 两个子空间的直和</h3>
+<blockquote>
+<p>Suppose <strong> <em>U</em> </strong> and <strong> <em>W</em> </strong> are subspaces of <strong> <em>V</em> </strong>. Then <strong> <em>U</em> </strong> + <strong> <em>W</em> </strong> is a direct sum if and only if <strong> <em>U</em> </strong> ∩ <strong> <em>W</em> </strong> = {0}.</p>
+</blockquote>
+<p>证明如下:</p>
+<blockquote>
+<p>First suppose that <strong> <em>U</em> </strong> + <strong> <em>W</em> </strong> is a direct sum. If <strong> <em>v</em> </strong> ∈ <strong> <em>U</em> </strong> ∩ <strong> <em>W</em> </strong>, then 0 = <strong> <em>v</em> </strong> + (<strong> <em>-v</em> </strong>), where <strong> <em>v</em> </strong> ∈ <strong> <em>U</em> </strong> and <strong> <em>-v</em> </strong> ∈ <strong> <em>W</em> </strong>. By the unique representation of 0 as the sum of a vector in <strong> <em>U</em> </strong> and a vector in <strong> <em>W</em> </strong>, we have <strong> <em>v</em> </strong> = 0. Thus <strong> <em>U</em> </strong> ∩ <strong> <em>W</em> </strong> = {0}, completing the proof in one direction.</p>
+<p>To prove the other direction, now suppose <strong> <em>U</em> </strong> ∩ <strong> <em>W</em> </strong> = {0}. To prove that <strong> <em>U</em> </strong> + <strong> <em>W</em> </strong> is a direct sum, suppose <strong> <em>u</em> </strong> ∈ <strong> <em>U</em> </strong>, <strong> <em>w</em> </strong> ∈ <strong> <em>W</em> </strong> and</p>
+<center> 0 = <strong> <em>u</em> </strong> + <strong> <em>w</em> </strong>  </center>
+
+<p>To complete the proof, we need only show that <strong> <em>u</em> </strong> = <strong> <em>w</em> </strong> (by 1.44). The equation above implies that <strong> <em>u</em> </strong> = <strong> <em>-w</em> </strong> ∈ <strong> <em>W</em> </strong>. Thus <strong> <em>u</em> </strong> ∈ <strong> <em>U</em> </strong> ∩ <strong> <em>W</em> </strong>. Hence <strong> <em>u</em> </strong> = 0, which by the equation above implies that <strong> <em>w</em> </strong> =  0, completing the proof.</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag"># 线性代数</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/03/11/%E5%85%B3%E4%BA%8E%E9%9F%B3%E4%B9%90%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E6%91%87%E6%BB%9A-1/" rel="prev" title="关于音乐——数学摇滚#1">
+      <i class="fa fa-chevron-left"></i> 关于音乐——数学摇滚#1
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81OTYxOS8zNjA4MQ=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-algebra-done-right-3"><span class="nav-number">1.</span> <span class="nav-text">Linear Algebra Done Right #3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-1-c-subspaces-"><span class="nav-number">1.1.</span> <span class="nav-text">Chapter 1.C  Subspaces 子空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-32-definition-subspace-"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.32 Definition subspace  子空间定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-34-conditions-for-a-subspace-"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.34 Conditions for a subspace 满足子空间的条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sums-of-subspaces-"><span class="nav-number">1.2.</span> <span class="nav-text">Sums of Subspaces 子空间的和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-36-definition-sum-of-subsets-"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.36 Definition sum of subsets 子空间的和的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-39-sum-of-subspaces-is-the-smallest-containing-subspace-"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.39 Sum of subspaces is the smallest containing subspace 子空间的和是最小的包含子空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#direct-sums-"><span class="nav-number">1.3.</span> <span class="nav-text">Direct Sums  直和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-40-definition-direct-sum-"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.40 Definition direct sum 直和的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-44-condition-for-a-direct-sum-"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.44 Condition for a direct sum 满足直和的条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-45-direct-sum-of-two-subspaces-"><span class="nav-number">1.3.3.</span> <span class="nav-text">1.45 Direct sum of two subspaces 两个子空间的直和</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="goatf1ower1"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">goatf1ower1</p>
+  <div class="site-description" itemprop="description">"See you, either in Hell, or Communism."</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/goatf1ower1" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;goatf1ower1" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://space.bilibili.com/81099160" title="https:&#x2F;&#x2F;space.bilibili.com&#x2F;81099160" rel="noopener" target="_blank">B站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; Sat Mar 09 2024 08:00:00 GMT+0800 (GMT+08:00) – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">goatf1ower1</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">3k</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共1.7k字</span>
+</div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
