@@ -22,30 +22,34 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="&quot;See you, either in Hell, or Communism.&quot;">
-<meta property="og:type" content="website">
-<meta property="og:title" content="goatf1ower1的博客">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Chapter 1.A    Rⁿ  and  Cⁿ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linear Algebra Done Right#1">
+<meta property="og:url" content="http://example.com/2024/10/12/linearalgebradoneright1/index.html">
 <meta property="og:site_name" content="goatf1ower1的博客">
-<meta property="og:description" content="&quot;See you, either in Hell, or Communism.&quot;">
+<meta property="og:description" content="Chapter 1.A    Rⁿ  and  Cⁿ">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-12T14:34:40.000Z">
+<meta property="article:modified_time" content="2024-10-12T14:35:16.011Z">
 <meta property="article:author" content="goatf1ower1">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="线性代数">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2024/10/12/linearalgebradoneright1/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>goatf1ower1的博客</title>
+  <title>Linear Algebra Done Right#1 | goatf1ower1的博客</title>
   
 
 
@@ -187,9 +191,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -205,10 +210,9 @@
       <meta itemprop="name" content="goatf1ower1的博客">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/10/12/linearalgebradoneright1/" class="post-title-link" itemprop="url">Linear Algebra Done Right#1</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Linear Algebra Done Right#1
+        </h1>
 
         <div class="post-meta">
 
@@ -232,7 +236,14 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -257,224 +268,122 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="chapter-1-a-r-and-c-">Chapter 1.A   <strong> Rⁿ </strong> and <strong> Cⁿ </strong></h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/10/12/linearalgebradoneright1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <h2 id="chapter-1-a-r-and-c-">Chapter 1.A   <strong> Rⁿ </strong> and <strong> Cⁿ </strong></h2>
+
+<span id="more"></span>
+
+<p>本节主要定义了复数的概念和一些运算性质，以及列表list和<strong> F </strong>及<strong> Fⁿ </strong>等概念。</p>
+<h2 id="complex-numbers-">Complex Numbers 复数</h2>
+<h3 id="1-1-definition-complex-numbers-">1.1 Definition <em>complex numbers</em> 复数的定义</h3>
+<blockquote>
+<ul>
+<li>A <em>complex number</em> is an ordered pair (<em>a</em>,<em>b</em>), where <em>a</em>,<em>b</em> ∈ <strong> R </strong>, but we will write this as <em>a</em>+<em>bi</em>.</li><li>The set of all complex numbers is denoted by <strong> C </strong>:<center> <strong> C </strong> = {<em>a</em>+<em>bi</em>:<em>a</em>,<em>b</em> ∈ <strong> R </strong>} </center> </li><li><strong> <em>Addition and multiplication </em> </strong>on<strong> C </strong> are defined by<br><center> (<em>a</em>+<em>bi</em>)+(<em>c</em>+<em>di</em>) = (<em>a</em>+<em>c</em>)+(<em>b</em>+<em>d</em>)<em>i</em>,<br>(<em>a</em>+<em>bi</em>)(<em>c</em>+<em>di</em>) = (<em>ac</em>-<em>bd</em>)+(<em>ad</em>+<em>bc</em>)<em>i</em>; </center><br>here <em>a,b,c,d</em> ∈ <strong> R </strong>.</li></ul>
+</blockquote>
+<p>eg1.2</p>
+<h3 id="1-3-properties-of-complex-arithmetic-">1.3 Properties of complex arithmetic 复数运算的一些性质</h3>
+<blockquote>
+<p><strong>commutativity</strong></p>
+<center> <em>α+β</em> = <em>β+α</em> and <em>αβ</em> = <em>βα</em> for all <em>α,β</em>∈<strong> C </strong> </center><br><strong>associativity</strong><br><center> <em>(α+β)+λ</em> = <em>α+(β+λ)</em> and <em>(αβ)λ</em> = <em>α(βλ)</em> for all <em>α,β,λ</em>∈<strong> C </strong> </center><br><strong>identities</strong><br><center> <em>λ</em> + 0 = <em>λ</em> and <em>λ</em>1 = <em>λ</em> for all <em>λ</em>∈<strong> C </strong> </center><br><strong>additive inverse</strong><br><center> for every <em>α</em> ∈ <strong> C </strong>, there exists a unique <em>β</em> ∈ <strong> C </strong> such that <em>α</em>+<em>β</em> = 0; </center><br><strong>multiplicative inverse</strong><br><center> for every <em>α</em> ∈ <strong> C </strong> with <em>α</em> ≠ 0, there exists a unique <em>β</em> ∈ <strong> C </strong> such that <em>αβ</em> = 1; </center><br><strong>distributive property</strong><br><center> <em>λ(α+β)</em> = <em>λα+λβ</em> for all <em>λ,α,β</em> ∈<strong> C </strong> </center> 
+
+</blockquote>
+<p>这里的一些性质和实数的性质非常相似，想要证明可以用实数的一些性质和之前对复数的定义来证明，eg1.4。</p>
+<h3 id="definition-subtraction-1-division-1-">Definition <em>-α</em>,<em>subtraction</em>,1/<em>α</em>,<em>division</em> 加法逆元<em>-α</em>，减法，乘法逆元1/<em>α</em>，除法的定义</h3>
+<blockquote>
+<p>Let <em>α,β</em> ∈<strong> C </strong>.</p>
+<ul>
+<li>Let <em>-α</em> denote the additive inverse of <em>α</em>. Thus <em>-α</em> is the unique complex number such that<center> <em>α+(-α)</em> = 0. </center></li><li><strong> <em>Subtraction</em> </strong> on <strong> C </strong> is defined by<center> <em>β-α</em> = <em>β+(-α)</em>. </center></li><li>For <em>α</em> ≠ 0, let 1/<em>α</em> denote the multiplicative inverse of <em>α</em>. Thus 1/<em>α</em> is the unique complex number such that<center> <em>α</em>(1/<em>α</em>) = 1. </center></li><li><strong> <em>Division</em> </strong> on <strong>C</strong> is defined by<center> <em>β/α</em> =  <em>β(1/α)</em>. </center>  
+
+</li></ul>
+</blockquote>
+<p>此处同上。</p>
+<h3 id="1-6-notation-f-f">1.6 Notation F 符号F</h3>
+<blockquote>
+<p>Throughout this book, <strong>F</strong> stands for either <strong>R</strong> or <strong>C</strong>.</p>
+</blockquote>
+<p>值得注意的是，这里F中的每个元素都是标量，与之相对的是向量，书上还定义了a次方，但这里就不赘述了，eg1,7。</p>
+<h2 id="lists-">Lists 列表</h2>
+<h3 id="1-8-definition-list-length-">1.8 Definition <em>list,length</em> 列表和长度的定义</h3>
+<blockquote>
+<p>Suppose <em>n</em> is a nonnegative integer. A <strong> <em>list</em> </strong> of <strong> <em>length</em> </strong> n is an ordered collection of <em>n</em> elements (which might be numbers, other lists, or more abstract entities) separated by commas and surrounded by parentheses. A list of length <em>n</em> looks like that:</p>
+<p><center> (<em>x₁,...,xₙ</em>). </center><br>Two lists are equal if and only if they have the same length and the same elements in the same order.</p>
+</blockquote>
+<p>这里要强调的有两点，一是列表中的元素都是非负整数，二是列表是有长度的。列表和集合的不同之处在于前者内部的元素顺序和重复是有意义的，而后者没有，ex1.9。</p>
+<h2 id="f-">Fⁿ</h2>
+<h3 id="definition-f-f-">Definition Fⁿ Fⁿ的定义</h3>
+<blockquote>
+<p><strong>Fⁿ</strong> is the set of all lists of length <em>n</em> of elements of <strong>F</strong>:</p>
+<p><center> <strong>Fⁿ</strong> = {(<em>x₁,...,xₙ</em>):<em>xⱼ</em> ∈ <strong>F</strong> for <em>j</em> =  }. </center><br>For (<em>x₁,...,xₙ</em>) ∈ <strong>Fⁿ</strong> and <em>j</em> ∈ {1,...,<em>n</em>}, we say that <em>xⱼ</em> is the <em>jᵗʰ</em> <strong> <em>coordinate</em> </strong> of (<em>x₁,...,xₙ</em>).</p>
+</blockquote>
+<p>eg1.11</p>
+<h3 id="1-12-definition-addition-in-f-f-">1.12 Definition <em>addition in</em> Fⁿ Fⁿ中加法的定义</h3>
+<blockquote>
+<p><strong> <em>Addition</em> </strong> in <strong>Fⁿ</strong> is defined by adding corresponding coordinates:</p>
+<center> (<em>x₁,...,xₙ</em>)+(<em>y₁,...,yₙ</em>) = (<em>x₁+y₁,...,xₙ+yₙ</em>) </center>
+
+</blockquote>
+<h3 id="1-13-commutativity-of-addition-in-f-f-">1.13 Commutativity of addition in Fⁿ Fⁿ中加法交换律的定义</h3>
+<blockquote>
+<p>If <em>x,y</em> ∈ <strong>Fⁿ</strong>, then <em>x+y</em> = <em>y+x</em>.</p>
+</blockquote>
+<p>此处证明用上面定义与F中的交换律即可。</p>
+<h3 id="1-14-definition-0-0-">1.14 Definition 0 0的定义</h3>
+<blockquote>
+<p>Let 0 denote the list of length <em>n</em> whose coordinates are all 0:</p>
+<center> 0 = (0,...,0). </center>
+
+</blockquote>
+<p>这里用0来定义确定长度中所有元素为0的列表，要区分式子中的0是数字还是列表主要看其他项是属于什么域，eg1.15。</p>
+<h3 id="1-16-definition-additive-inverse-in-f-f-">1.16 Definition <em>additive inverse in </em>Fⁿ Fⁿ中加法逆元的定义</h3>
+<blockquote>
+<p>For <em>x</em> ∈ <strong>Fⁿ</strong>, the <strong> <em>additive inverse</em> </strong> of <em>x</em>, denoted <em>-x</em>, is the vector <em>-x</em> ∈ <strong>Fⁿ</strong> such that</p>
+<p><center> <em>x</em>+<em>(-x)</em> = 0. </center><br>In other words, if <em>x</em> = (<em>x₁,...,xₙ</em>), then <em>-x</em> = (<em>-x₁,...,-xₙ</em>).</p>
+</blockquote>
+<h3 id="1-17-definition-scalar-multiplication-in-f-f-">1.17 Definition <em>scalar multiplication in</em> Fⁿ Fⁿ中数乘的定义</h3>
+<blockquote>
+<p>The <strong> <em>product</em> </strong> of a number <em>λ</em> and a vector in Fⁿ is computed by multiplying each coordinate of the vector by <em>λ</em>:</p>
+<p><center> <em>λ</em>(<em>x₁,...,xₙ</em>) = (<em>λx₁,...,λxₙ</em>); </center><br>here <em>λ</em> ∈ <strong>F</strong> and (<em>x₁,...,xₙ</em>) ∈ <strong>Fⁿ</strong>.</p>
+</blockquote>
+<p>这里我们定义了Fⁿ中加法和数乘的计算，这样让我们便于后面的计算，至于向量和向量的乘法并不能简单的照搬F中的定义，所以这里暂按不表。</p>
+
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag"># 线性代数</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/10/linearalgebradoneright3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="goatf1ower1">
-      <meta itemprop="description" content=""See you, either in Hell, or Communism."">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="goatf1ower1的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/10/10/linearalgebradoneright3/" class="post-title-link" itemprop="url">Linear Algebra Done Right#3</a>
-        </h2>
-
-        <div class="post-meta">
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-10-10 21:15:00 / 修改时间：21:48:01" itemprop="dateCreated datePublished" datetime="2024-10-10T21:15:00+08:00">2024-10-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="chapter-1-c-subspaces-">Chapter 1.C  Subspaces 子空间</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/10/10/linearalgebradoneright3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/11/%E5%85%B3%E4%BA%8E%E9%9F%B3%E4%B9%90%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E6%91%87%E6%BB%9A-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="goatf1ower1">
-      <meta itemprop="description" content=""See you, either in Hell, or Communism."">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="goatf1ower1的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/03/11/%E5%85%B3%E4%BA%8E%E9%9F%B3%E4%B9%90%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E6%91%87%E6%BB%9A-1/" class="post-title-link" itemprop="url">关于音乐——数学摇滚#1</a>
-        </h2>
-
-        <div class="post-meta">
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-03-11 12:42:57" itemprop="dateCreated datePublished" datetime="2024-03-11T12:42:57+08:00">2024-03-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-10 21:29:56" itemprop="dateModified" datetime="2024-10-10T21:29:56+08:00">2024-10-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E4%B9%90/" itemprop="url" rel="index"><span itemprop="name">音乐</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>342</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://pic1.zhimg.com/80/6273e98fee8f21c5b3f04992c673a20c_1440w.webp?source=1def8aca" alt="toe.jpg"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/03/11/%E5%85%B3%E4%BA%8E%E9%9F%B3%E4%B9%90%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E6%91%87%E6%BB%9A-1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/10/10/linearalgebradoneright3/" rel="prev" title="Linear Algebra Done Right#3">
+      <i class="fa fa-chevron-left"></i> Linear Algebra Done Right#3
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81OTYxOS8zNjA4MQ=="></div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -521,6 +430,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-1-a-r-and-c-"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1.A    Rⁿ  and  Cⁿ </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#complex-numbers-"><span class="nav-number">2.</span> <span class="nav-text">Complex Numbers 复数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-definition-complex-numbers-"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 Definition complex numbers 复数的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-properties-of-complex-arithmetic-"><span class="nav-number">2.2.</span> <span class="nav-text">1.3 Properties of complex arithmetic 复数运算的一些性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#definition-subtraction-1-division-1-"><span class="nav-number">2.3.</span> <span class="nav-text">Definition -α,subtraction,1&#x2F;α,division 加法逆元-α，减法，乘法逆元1&#x2F;α，除法的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-notation-f-f"><span class="nav-number">2.4.</span> <span class="nav-text">1.6 Notation F 符号F</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lists-"><span class="nav-number">3.</span> <span class="nav-text">Lists 列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8-definition-list-length-"><span class="nav-number">3.1.</span> <span class="nav-text">1.8 Definition list,length 列表和长度的定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#f-"><span class="nav-number">4.</span> <span class="nav-text">Fⁿ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#definition-f-f-"><span class="nav-number">4.1.</span> <span class="nav-text">Definition Fⁿ Fⁿ的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-12-definition-addition-in-f-f-"><span class="nav-number">4.2.</span> <span class="nav-text">1.12 Definition addition in Fⁿ Fⁿ中加法的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-13-commutativity-of-addition-in-f-f-"><span class="nav-number">4.3.</span> <span class="nav-text">1.13 Commutativity of addition in Fⁿ Fⁿ中加法交换律的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-14-definition-0-0-"><span class="nav-number">4.4.</span> <span class="nav-text">1.14 Definition 0 0的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-16-definition-additive-inverse-in-f-f-"><span class="nav-number">4.5.</span> <span class="nav-text">1.16 Definition additive inverse in Fⁿ Fⁿ中加法逆元的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-17-definition-scalar-multiplication-in-f-f-"><span class="nav-number">4.6.</span> <span class="nav-text">1.17 Definition scalar multiplication in Fⁿ Fⁿ中数乘的定义</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -718,6 +628,21 @@ $(document).ready(function() {
 
   
 
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
 
 </body>
 </html>
