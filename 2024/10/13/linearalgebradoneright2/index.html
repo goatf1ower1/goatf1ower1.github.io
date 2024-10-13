@@ -22,30 +22,34 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="&quot;See you, either in Hell, or Communism.&quot;">
-<meta property="og:type" content="website">
-<meta property="og:title" content="goatf1ower1的博客">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Chapter 1.B Definition of Vector Space 向量空间的定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linear Algebra Done Right#2">
+<meta property="og:url" content="http://example.com/2024/10/13/linearalgebradoneright2/index.html">
 <meta property="og:site_name" content="goatf1ower1的博客">
-<meta property="og:description" content="&quot;See you, either in Hell, or Communism.&quot;">
+<meta property="og:description" content="Chapter 1.B Definition of Vector Space 向量空间的定义">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-13T09:22:48.000Z">
+<meta property="article:modified_time" content="2024-10-13T09:23:17.353Z">
 <meta property="article:author" content="goatf1ower1">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="线性代数">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2024/10/13/linearalgebradoneright2/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>goatf1ower1的博客</title>
+  <title>Linear Algebra Done Right#2 | goatf1ower1的博客</title>
   
 
 
@@ -187,9 +191,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -205,10 +210,9 @@
       <meta itemprop="name" content="goatf1ower1的博客">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/10/13/linearalgebradoneright2/" class="post-title-link" itemprop="url">Linear Algebra Done Right#2</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Linear Algebra Done Right#2
+        </h1>
 
         <div class="post-meta">
 
@@ -232,7 +236,14 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -257,321 +268,116 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="chapter-1-b-definition-of-vector-space-">Chapter 1.B Definition of Vector Space 向量空间的定义</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/10/13/linearalgebradoneright2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <h2 id="chapter-1-b-definition-of-vector-space-">Chapter 1.B Definition of Vector Space 向量空间的定义</h2>
+
+<span id="more"></span>
+
+<p>这一节主要讨论的是向量空间及其相关性质的定义。</p>
+<h3 id="1-18-definition-addition-scalar-multiplication-">1.18 Definition <em>addition, scalar multiplication</em> 加法，数乘的定义</h3>
+<blockquote>
+<ul>
+<li>An <strong> <em>addition</em> </strong> on set <strong> <em>V</em> </strong> is a function that assigns an element <em>u+v</em> ∈ <strong> <em>V</em> </strong> to each pair of elements <em>u,v</em> ∈ <strong> <em>V</em> </strong>.</li><li>A <strong> <em>scalar multiplication</em> </strong> on a set <strong> <em>V</em> </strong> is a function that assigns an elements <em>λv</em> ∈ <strong> <em>V</em> </strong> to each <em>λ</em> ∈ <strong> F </strong> and each <em>v</em> ∈ <strong> <em>V</em> </strong>.</li></ul>
+</blockquote>
+<p>要定义向量空间，我们自然想到在之前对Fⁿ中加法和数乘的定义，这里我们同样可以这样做，在这里对集合V中的加法和数乘进行定义之后就可以正式的定义向量空间了。</p>
+<h3 id="1-19-definition-vector-space-">1.19 Definition <em>vector space</em> 向量空间的定义</h3>
+<blockquote>
+<p>A <strong> <em>vector space</em> </strong> is a set <strong> <em>V</em> </strong> along with an addition on <strong> <em>V</em> </strong> and a scalar multiplication on <strong> <em>V</em> </strong> such that the following properties hold:</p>
+<p><strong>commutativity</strong></p>
+<center> <em>u+v</em> = <em>v+u</em> for all <em>u,v</em> ∈ <strong> <em>V</em> </strong> </center><br><strong>associativity</strong><br><center> <em>(u+v)+w</em> = <em>u+(v+w)</em> and <em>(ab)v</em> = <em>a(bv)</em> for all <em>u,v,w</em> ∈ <strong> <em>V</em> </strong> and all <em>a,b</em>∈<strong> F </strong> </center><br><strong>additive identities</strong><br><center> there exists an element 0 ∈ <strong> <em>V</em> </strong> such that <em>v</em>+0 = <em>v</em> for all <em>v</em> ∈ <strong> <em>V</em> </strong>; </center><br><strong>additive inverse</strong><br><center> for every <em>v</em> ∈ <strong> <em>V</em> </strong>, there exists <em>w</em> ∈ <strong> <em>V</em> </strong> such that <em>u</em>+<em>v</em> = 0; </center><br><strong>multiplicative identity</strong><br><center> 1<em>v</em> = <em>v</em> for all <em>v</em> ∈ <strong> <em>V</em> </strong>; </center><br><strong>distributive property</strong><br><center> <em>a(u+v)</em> = <em>au+av</em> and <em>(a+b)v</em> = <em>av+bv</em> for all <em>a,b</em> ∈<strong> F </strong> and all <em>u,v</em> ∈ <strong> <em>V</em> </strong>; </center> 
+
+</blockquote>
+<p>这里的定义与上一节对复数运算的定义很相似，类比理解即可，只需注意这里V中的元素是向量。</p>
+<h3 id="1-20-definition-vector-point-">1.20 Definition <em>vector,point</em> 向量，点的定义</h3>
+<blockquote>
+<p>Elements of a vector space are called <strong> <em>vectors</em> </strong> or <strong> <em>points</em> </strong>.</p>
+</blockquote>
+<p>至此，我们可以说V是在F上的一个向量空间，因为V中的数乘是依赖F中的性质的，同理我们可以说Rⁿ和Cⁿ都是在R和C上的向量空间。</p>
+<h3 id="1-21-definition-real-vector-space-complex-vector-space-">1.21 Definition <em>real vector space, complex vector space</em> 实数向量空间，复数向量空间的定义</h3>
+<blockquote>
+<ul>
+<li>A vector space over <strong>R</strong> is called a <strong> <em>real vector space</em> </strong>.</li><li>A vector space over <strong>C</strong> is called a <strong> <em>complex vector space</em> </strong>.</li></ul>
+</blockquote>
+<p>eg1.22</p>
+<h3 id="1-23-notation-f-f-">1.23 Notation <strong>Fˢ</strong> 符号Fˢ</h3>
+<blockquote>
+<ul>
+<li>If <strong> <em>S</em> </strong> is a set, then <strong>Fˢ</strong> denotes the set of functions from <strong> <em>S</em> </strong> to <strong>F</strong>.</li><li>For <em>f,g</em> ∈ <strong> Fˢ </strong>, the <strong> <em>sum</em> </strong> <em>f+g</em> ∈ <strong> Fˢ </strong> is the function defined by<br><center> <em>(f+g)(x)</em> = <em>f(x)+g(x)</em> </center><br>for all <em>x</em> ∈ <strong> <em>S</em> </strong>.</li><li>For <em>λ</em> ∈ <strong> F </strong> and <em>f</em> ∈ <strong>Fˢ</strong>, the <strong> <em>product</em> </strong> <em>λf</em> ∈ <strong>Fˢ</strong> is the function defined by<br><center> <em>(λf)(x)</em> = <em>λf(x)</em> </center><br>for all <em>x</em> ∈ <strong> S </strong>.</li></ul>
+</blockquote>
+<p>这里有点抽象的是Fˢ中的元素是向量也是函数，因为S中的元素是自变量x。这里定义了Fˢ后又定义了Fˢ中的加法和数乘。书上举了一个例子，如果S是间隔[0,1]且F=R，那么R[0,1]就是在间隔[0，1]上所有实值函数的集合，eg1.24。</p>
+<p>接下来是引出向量空间一些基本的性质。</p>
+<h3 id="1-25-unique-additive-identity-">1.25 Unique additive identity 唯一加法元</h3>
+<blockquote>
+<p>A vector space has a unique additive identity.</p>
+</blockquote>
+<h3 id="1-26-unique-additive-inverse-">1.26 Unique additive inverse 唯一加法逆元</h3>
+<blockquote>
+<p>Every element in a vector space has a unique additive inverse.</p>
+</blockquote>
+<p>这两条性质的证明只需用之前定义向量空间的一些性质即可证明。</p>
+<h3 id="1-27-notation-v-w-v-v-w-v-">1.27 Notation <em>-v, w-v</em> 符号<em>-v, w-v</em></h3>
+<blockquote>
+<p>Let <em>v, w</em> ∈ <strong> <em>V</em> </strong>. Then</p>
+<ul>
+<li><em>-v</em> denotes the additive inverse of <em>v</em>;</li><li><em>w-v</em> is defined to be <em>w+(-v)</em>.</li></ul>
+</blockquote>
+<h3 id="1-28-notation-v-v">1.28 Notation <strong> <em>V</em> </strong> 符号V</h3>
+<blockquote>
+<p>For the rest of the book, <strong> <em>V</em> </strong> denotes a vector space over <strong>F</strong>.</p>
+</blockquote>
+<h3 id="1-29-the-number-0-times-a-vector-0-">1.29 The number 0 times a vector 数字0乘以一个向量</h3>
+<blockquote>
+<p>0<em>v</em> = 0 for every <em>v </em> ∈ <strong> <em>V</em> </strong>.</p>
+</blockquote>
+<p>这里等号左边的0是标量，后边的0是向量，证明只需零0v=(0+0)v=0v+0v然后左右同时加上加法逆元即可。</p>
+<h3 id="1-30-a-number-times-the-vector-0-0">1.30 A number times the vector 0 一个数字乘以一个向量0</h3>
+<blockquote>
+<p><em>a</em>0 = 0 for every <em>a</em> ∈ <strong>F</strong>.</p>
+</blockquote>
+<h3 id="1-31-the-number-1-times-a-vector-1-">1.31 The number -1 times a vector 数字-1乘以一个向量</h3>
+<blockquote>
+<p>(-1)<em>v</em> = -<em>v</em> for every <em>v</em> ∈ <strong> <em>V</em> </strong></p>
+</blockquote>
+<p>1.30，1.31和1.29同理。</p>
+
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag"># 线性代数</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/12/linearalgebradoneright1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="goatf1ower1">
-      <meta itemprop="description" content=""See you, either in Hell, or Communism."">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="goatf1ower1的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/10/12/linearalgebradoneright1/" class="post-title-link" itemprop="url">Linear Algebra Done Right#1</a>
-        </h2>
-
-        <div class="post-meta">
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-10-12 22:34:40" itemprop="dateCreated datePublished" datetime="2024-10-12T22:34:40+08:00">2024-10-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-13 15:10:34" itemprop="dateModified" datetime="2024-10-13T15:10:34+08:00">2024-10-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="chapter-1-a-r-and-c-">Chapter 1.A   <strong> Rⁿ </strong> and <strong> Cⁿ </strong></h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/10/12/linearalgebradoneright1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/10/linearalgebradoneright3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="goatf1ower1">
-      <meta itemprop="description" content=""See you, either in Hell, or Communism."">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="goatf1ower1的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/10/10/linearalgebradoneright3/" class="post-title-link" itemprop="url">Linear Algebra Done Right#3</a>
-        </h2>
-
-        <div class="post-meta">
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-10-10 21:15:00 / 修改时间：21:48:01" itemprop="dateCreated datePublished" datetime="2024-10-10T21:15:00+08:00">2024-10-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="chapter-1-c-subspaces-">Chapter 1.C  Subspaces 子空间</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/10/10/linearalgebradoneright3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/10/12/linearalgebradoneright1/" rel="prev" title="Linear Algebra Done Right#1">
+      <i class="fa fa-chevron-left"></i> Linear Algebra Done Right#1
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/11/%E5%85%B3%E4%BA%8E%E9%9F%B3%E4%B9%90%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E6%91%87%E6%BB%9A-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="goatf1ower1">
-      <meta itemprop="description" content=""See you, either in Hell, or Communism."">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="goatf1ower1的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/03/11/%E5%85%B3%E4%BA%8E%E9%9F%B3%E4%B9%90%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E6%91%87%E6%BB%9A-1/" class="post-title-link" itemprop="url">关于音乐——数学摇滚#1</a>
-        </h2>
-
-        <div class="post-meta">
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-03-11 12:42:57" itemprop="dateCreated datePublished" datetime="2024-03-11T12:42:57+08:00">2024-03-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-10 21:29:56" itemprop="dateModified" datetime="2024-10-10T21:29:56+08:00">2024-10-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E4%B9%90/" itemprop="url" rel="index"><span itemprop="name">音乐</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>342</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://pic1.zhimg.com/80/6273e98fee8f21c5b3f04992c673a20c_1440w.webp?source=1def8aca" alt="toe.jpg"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/03/11/%E5%85%B3%E4%BA%8E%E9%9F%B3%E4%B9%90%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E6%91%87%E6%BB%9A-1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81OTYxOS8zNjA4MQ=="></div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -618,6 +424,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-1-b-definition-of-vector-space-"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1.B Definition of Vector Space 向量空间的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-18-definition-addition-scalar-multiplication-"><span class="nav-number">1.1.</span> <span class="nav-text">1.18 Definition addition, scalar multiplication 加法，数乘的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-19-definition-vector-space-"><span class="nav-number">1.2.</span> <span class="nav-text">1.19 Definition vector space 向量空间的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-20-definition-vector-point-"><span class="nav-number">1.3.</span> <span class="nav-text">1.20 Definition vector,point 向量，点的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-21-definition-real-vector-space-complex-vector-space-"><span class="nav-number">1.4.</span> <span class="nav-text">1.21 Definition real vector space, complex vector space 实数向量空间，复数向量空间的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-23-notation-f-f-"><span class="nav-number">1.5.</span> <span class="nav-text">1.23 Notation Fˢ 符号Fˢ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-25-unique-additive-identity-"><span class="nav-number">1.6.</span> <span class="nav-text">1.25 Unique additive identity 唯一加法元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-26-unique-additive-inverse-"><span class="nav-number">1.7.</span> <span class="nav-text">1.26 Unique additive inverse 唯一加法逆元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-27-notation-v-w-v-v-w-v-"><span class="nav-number">1.8.</span> <span class="nav-text">1.27 Notation -v, w-v 符号-v, w-v</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-28-notation-v-v"><span class="nav-number">1.9.</span> <span class="nav-text">1.28 Notation  V  符号V</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-29-the-number-0-times-a-vector-0-"><span class="nav-number">1.10.</span> <span class="nav-text">1.29 The number 0 times a vector 数字0乘以一个向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-30-a-number-times-the-vector-0-0"><span class="nav-number">1.11.</span> <span class="nav-text">1.30 A number times the vector 0 一个数字乘以一个向量0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-31-the-number-1-times-a-vector-1-"><span class="nav-number">1.12.</span> <span class="nav-text">1.31 The number -1 times a vector 数字-1乘以一个向量</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -815,6 +622,21 @@ $(document).ready(function() {
 
   
 
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
 
 </body>
 </html>
