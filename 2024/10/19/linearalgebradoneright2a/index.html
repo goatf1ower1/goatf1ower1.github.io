@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/coffee_32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/coffee_16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Chapter 2.A  Span and Linear Independence 张和线性无关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linear Algebra Done Right Chapter 2.A#5">
+<meta property="og:url" content="http://example.com/2024/10/19/linearalgebradoneright2a/index.html">
+<meta property="og:site_name" content="goatf1ower1的博客">
+<meta property="og:description" content="Chapter 2.A  Span and Linear Independence 张和线性无关">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-19T09:07:00.000Z">
+<meta property="article:modified_time" content="2024-10-19T09:08:24.835Z">
+<meta property="article:author" content="goatf1ower1">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="线性代数">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/10/19/linearalgebradoneright2a/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Linear Algebra Done Right Chapter 2.A#5 | goatf1ower1的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">goatf1ower1的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/19/linearalgebradoneright2a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="goatf1ower1">
+      <meta itemprop="description" content=""See you, either in Hell, or Communism."">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="goatf1ower1的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linear Algebra Done Right Chapter 2.A#5
+        </h1>
+
+        <div class="post-meta">
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-10-19 17:07:00 / 修改时间：17:08:24" itemprop="dateCreated datePublished" datetime="2024-10-19T17:07:00+08:00">2024-10-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>12 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="chapter-2-a-span-and-linear-independence-">Chapter 2.A  Span and Linear Independence 张和线性无关</h2>
+
+<span id="more"></span>
+
+<p>这一节定义了有关线性的和有限维向量空间的一些新概念，并且讨论了其中的一些性质。</p>
+<p>之前我们定义了列表的概念，当时定义的是用括号括起来的n个元素有序地排列的聚合，这里的元素是数字，列表或者其他抽象的字符。而为了避免混淆，包含向量的列表将不会在左右两遍进行括号，例如：(4，1，6)，(9，5，7)这个列表就是长度为2的一个列表。</p>
+<h3 id="2-2-notation-list-of-vectors-">2.2 Notation <em>list of vectors</em> 符号 向量列表</h3>
+<blockquote>
+<p>We will usually write lists of vectors without surrounding parentheses.</p>
+</blockquote>
+<h2 id="linear-combinations-and-span-">Linear Combinations and Span 线性组合和张</h2>
+<h3 id="2-3-definition-linear-combination-">2.3 Definition <em>linear combination</em> 线性组合的定义</h3>
+<blockquote>
+<p>A <strong> <em>linear combination</em> </strong> of a list <em>v₁,...,vₘ</em> of vectors in <strong> <em>V</em> </strong> is a vector of the form</p>
+<p><center> <em>a₁v₁+···+aₘvₘ</em>, </center><br>where <em>a₁,...,aₘ</em> ∈ <strong> F </strong>.</p>
+</blockquote>
+<p>eg2.4</p>
+<h3 id="2-5-definition-span-">2.5 Definition <em>span</em> 张的定义</h3>
+<blockquote>
+<p>The set of all linear combinations of a list of vectors <em>v₁,...,vₘ</em> in <strong> <em>V</em> </strong> is called the <strong> <em>span</em> </strong> of <em>v₁,...,vₘ</em>, denoted span(<em>v₁,...,vₘ</em>). In other words,</p>
+<p><center> span(<em>v₁,...,vₘ</em>) = {<em>a₁v₁+···+aₘvₘ</em>:<em>a₁,...,aₘ</em> ∈ <strong> F </strong>}. </center><br>The span of the empty list () is defined to be {0}.</p>
+</blockquote>
+<p>这里说明张其实就是线性组合的结果，一组向量通过线性组合就可以张成一个空间，eg2.6。</p>
+<h3 id="2-7-span-is-the-smallest-containing-subspace-">2.7 Span is the smallest containing subspace 张是最小的包含子空间</h3>
+<blockquote>
+<p>The span of a list of vectors in <strong> <em>V</em> </strong> is the smallest subspace of <strong> <em>V</em> </strong> containing all the vectors in the list.</p>
+</blockquote>
+<p>这里的证明和1.C节中和是最小的包含子空间的证明非常类似。要证明子空间，通过0 = 0<em>v₁</em>+···+0<em>vₘ</em>；(<em>a₁v₁</em>+···+<em>aₘvₘ</em>)+(<em>c₁v₁</em>+···+<em>cₘvₘ</em>) = (<em>a₁</em>+<em>c₁</em>)<em>v₁</em>+···+（<em>aₘ</em>+<em>cₘ</em>）<em>vₘ</em>；<em>λ</em>(<em>a₁v₁</em>+···+<em>aₘvₘ</em>) = <em>λa₁v₁</em>+···+<em>λaₘvₘ</em> 可分别证得加法元、加法封闭和乘法封闭，因此子空间证得。</p>
+<p>要证明包含，通过令<em>aⱼ</em>以外的<em>a</em>&#39;s都为0，可得<em>vⱼ</em>是<em>v₁,...,vₘ</em>的线性组合，所以span(<em>v₁,...,vₘ</em>)包含<em>vⱼ</em>，因此包含证得。</p>
+<p>要证明最小，因为子空间加法和乘法封闭，<strong> <em>V</em> </strong>的每个包含<em>vⱼ</em>的子空间都包含span(<em>v₁,...,vₘ</em>)，因此最小证得。</p>
+<h3 id="2-8-definition-spans-">2.8 Definition <em>spans</em> 张的定义</h3>
+<blockquote>
+<p>If span(<em>v₁,...,vₘ</em>) equals <strong> <em>V</em> </strong>, we say that <em>v₁,...,vₘ</em> <strong> <em>spans V</em> </strong>.</p>
+</blockquote>
+<p>eg2.9</p>
+<h3 id="2-10-definition-finite-dimensional-vector-space-">2.10 Definition <em>finite-dimensional vector space</em> 有限维的向量空间</h3>
+<blockquote>
+<p>A vector space is called <strong> <em>finite-dimensional</em> </strong> if some list of vectors in it spans the space.</p>
+</blockquote>
+<p>此处值得注意的是，“some”这个词不是“一些”的意思，而是“至少有一个”，也就是“存在”的意思，这也是为什么“list”没有加s，这与下文无限维的向量空间的描述是相对的。</p>
+<h3 id="2-11-definition-polynomial-p-f-p-f-">2.11 Definition <em>polynomial,P</em>(F) 多项式，P(F)</h3>
+<blockquote>
+<ul>
+<li>A funtion <em>p</em>:<strong>F → F</strong> is called <strong> <em>polynomial</em> </strong> with coefficients in <strong>F</strong> is there exists <em>a₁,...,aₘ</em> ∈ <strong>F</strong> such that<br><center> <em>p</em>(<em>z</em>) = <em>a₀+a₁z+a₂z²+···+aₘzᵐ</em> </center><br>for all <em>z</em> ∈ <strong>F</strong>.</li><li><em>P</em>(<strong>F</strong>) is the set of all polynomials with coerfficients in <strong>F</strong>.</li></ul>
+</blockquote>
+<p>需要强调的是，这里的多项式指的是多项式函数，因为z是属于F的。显然，P(F)也是F上的一个向量空间。</p>
+<h3 id="2-12-definition-degree-of-a-polynomial-deg-p-deg-p">2.12 Definition <em>degree of a polynomial,</em>deg p 多项式的次，deg p</h3>
+<blockquote>
+<ul>
+<li>A polynomial <em>p</em> ∈ <em>P</em>(<strong>F</strong>) is said to have <strong> <em>degree</em> </strong> <em>m</em> if there exist scalars <em>a₀,a₁,...,aₘ</em> ∈ <strong>F</strong> with <em>aₘ</em> ≠ 0 such that<br><center> <em>p</em>(<em>z</em>) = <em>a₀+a₁z+a₂z²+···+aₘzᵐ</em> </center><br>for all <em>z</em> ∈ <strong>F</strong>. If <em>p</em> has degree <em>m</em>, we write deg <em>p</em> = <em>m</em>.</li><li>The polynomial that is identically 0 is said to have degree -∞.</li></ul>
+</blockquote>
+<h3 id="2-13-definition-p-f-">2.13 Definition <em>Pₘ</em>(<strong>F</strong>)</h3>
+<blockquote>
+<p>For <em>m</em> a nonnegative integer, <em>Pₘ</em>(<strong>F</strong>) denotes the set of all polynomials with coefficients in <strong>F</strong> and degree at most <em>m</em>.</p>
+</blockquote>
+<p>这里有一些些许的符号滥用，我们需要在这里把zᵐ理解为从z到zᵐ上的一个映射。eg2.14</p>
+<h3 id="2-15-definition-infinite-dimensional-vector-space-">2.15 Definition <em>infinite-dimensional vector space</em> 无限维向量空间的定义</h3>
+<blockquote>
+<p>A vector space is called <strong> <em>infinite-dimensional</em> </strong> if it is not finite-dimensional.</p>
+</blockquote>
+<p>按照我们对有限维向量空间的定义，无限维的向量空间就是指不存在一个向量组能够长成的一个空间，eg2.16。</p>
+<h2 id="linear-independence-">Linear Independence 线性无关</h2>
+<p>如果考虑这样一种情况：<em>v₁,...,vₘ</em> ∈ <strong> <em>V</em> </strong>，<em>v</em> ∈ span(<em>v₁,...,vₘ</em>)通过张的定义，我们假设有</p>
+<p><center> <em>v</em> = <em>a₁v₁</em>+···+<em>aₘvₘ</em>. </center><br>首先我们考虑一下系数a的选择是不是唯一的，再假设有</p>
+<p><center> <em>v</em> = <em>c₁v₁</em>+···+<em>cₘvₘ</em>. </center><br>通过两式相减可得</p>
+<p><center> 0 = <em>(a₁-c₁)v₁</em>+···+<em>(aₘ-cₘ)vₘ</em> </center><br>显然，只有当aⱼ=cⱼ时，这样系数的选择才是唯一的，这种情况非常重要，所以我们给它取了一个特别的名字——线性无关。</p>
+<h3 id="2-17-definition-linearly-independent-">2.17 Definition <em>linearly independent</em> 线性无关的定义</h3>
+<blockquote>
+<ul>
+<li>A list <em>v₁,...,vₘ</em> of vectors in <strong> <em>V</em> </strong> is called <strong> <em>linearly independent</em> </strong> if the only choice of <em>a₀,a₁,...,aₘ</em> ∈ <strong>F</strong> that makes <em>a₁v₁</em>+···+<em>aₘvₘ</em> equal 0 is <em>a₁ = ··· = ···= aₘ =</em> 0.</li><li>The empty list() is also declared to be linearly independent.</li></ul>
+</blockquote>
+<p>上面的推论说明如果<em>v₁,...,vₘ</em>要线性无关，那么只有一种线性组合的方式，也就是系数都为0，eg2.18。</p>
+<h3 id="2-19-definition-linearly-dependent-">2.19 Definition <em>linearly dependent</em> 线性相关的定义</h3>
+<blockquote>
+<ul>
+<li>A list of vectors in <strong> <em>V</em> </strong> is called <strong> <em>linearly dependent</em> </strong> if it is not linearly independent.</li><li>In other words, a list <em>v₁,...,vₘ</em> of vectors in <strong> <em>V</em> </strong> is linearly dependent if there exist <em>a₁,...,aₘ</em> ∈ <strong>F</strong>, not all 0, such that <em>a₁v₁</em>+···+<em>aₘvₘ</em> = 0.</li></ul>
+</blockquote>
+<p>上面的推论说明如果<em>v₁,...,vₘ</em>要线性相关，那么就不止一种线性组合的方式使得结果为0，eg2.20。</p>
+<p>接下来会介绍一个引论，这个引论可以让我们把一组向量中的一些向量给去掉而不改变它线性组合所张成的空间。</p>
+<h3 id="2-21-linear-dependence-lemma-">2.21 Linear Dependence Lemma 线性相关引论</h3>
+<blockquote>
+<p>Suppose <em>v₁,...,vₘ</em> is a linearly dependent list in <strong> <em>V</em> </strong>. Then there exists <em>j</em> ∈ {1,2,...,<em>m</em>} such that the following hold:<br>(a) <em>vⱼ</em> ∈ span(<em>v₁,...,vⱼ₋₁</em>)；<br>(b) if the <em>jᵗʰ</em> term is removed from <em>v₁,...,vₘ</em>, the span of the remaining list equals span(<em>v₁,...,vₘ</em>).</p>
+</blockquote>
+<p>这里点(a)保证了<em>vⱼ</em>本身是属于除掉它过后的那个向量组所张成的向量空间的，点(b)保证了去掉<em>vⱼ</em>后的那个向量组所张成的向量空间与原向量空间不变，pf2.22。</p>
+<p>这里的证明是这样的：</p>
+<p>要证明点(a)，我们先假设<em>v₁,...,vₘ</em>是线性相关的，并让<em>j</em>成为最大的那个使得aⱼ不为0的那个元素，例如：<em>0 = 1a₁+0a₂+3a₃+0a₄</em>，那么<em>j</em>就为3。那么我们就可以得出：</p>
+<p><center> <em>aⱼvⱼ</em> = <em>-a₁v₁-···-aⱼ₋₁vⱼ₋₁</em> </center></p>
+<p><center> <em>vⱼ</em> = <em>(-a₁/aⱼ)v₁-···-(aⱼ₋₁/aⱼ)vⱼ₋₁</em> </center><br>这说明了<em>vⱼ</em>是<em>v₁,...,vⱼ₋₁</em>的线性组合，也就证明了点(a)。</p>
+<p>要证明点(b)，我们将span(<em>v₁,...,vⱼ,...,vₘ</em>)中的<em>vⱼ</em>替换成上面的式子，就可以得出：</p>
+<p><center> span(<em>v₁,...,(-a₁/aⱼ)v₁-···-(aⱼ₋₁/aⱼ)vⱼ₋₁,...,vₘ</em>)) </center><br>可以看到，因为<em>vⱼ</em>是<em>v₁,...,vⱼ₋₁</em>的线性组合，而span中本身就包含有<em>v₁,...,vⱼ₋₁</em>的线性组合，所以<em>vⱼ</em>实际上是重复的，所以是可以去除的，点(b)得证。</p>
+<h3 id="2-23-length-of-linearly-independent-list-length-of-spanning-list-">2.23 Length of linearly independent list ≤ length of spanning list 线性无关列表的长度小于张成列表的长度</h3>
+<blockquote>
+<p>In a finite-dimensional vector space, the length of every linearly independent list of vectors is less than or equal to the length of every spanning list of vectors.</p>
+</blockquote>
+<p>这句话用数学语言表达的话就是有<strong> <em>V</em> </strong> = span(<em>w₁,...,wₙ</em>)和线性无关组<em>u₁,...,uₘ</em>，这两个向量组都属于<strong> <em>V</em> </strong>，那么m≤n。</p>
+<p>这里的证明需要用到一步一步叠加这种证法，证明如下：</p>
+<p><strong>Step 1:</strong> </p>
+<p>我们先考虑这样一个张成空间<strong> <em>V</em> </strong>的向量组：<em>w₁,...,wₙ</em>，其中加上任何一个向量都可以得到一个线性相关组(因为新加入的向量可以用其他向量的线性组合表示)，然后，我们考虑一个特别的线性相关组：</p>
+<p><center> <em>u₁,w₁,...,wₙ</em> </center><br>通过引论2.21，我们可以把其中的一个<em>w</em>也就是<em>wⱼ₁</em>删掉，这里不能删除<em>u₁</em>的原因是因为如果删去<em>u₁</em>，那么<em>j</em>-1就等于0了，这种情况是我们不想要的。</p>
+<p><strong>Step 2:</strong> </p>
+<p>接下来我们继续这样操作得到：</p>
+<p><center> <em>u₁,u₂,w₁,...,wₙ</em> </center><br>这里依旧是删去一个<em>w</em>，即<em>wⱼ₂</em>，不能删除<em>u₁</em>的原因之前已经说过了，但是<em>u₂</em>并不像<em>u₁</em>一样<em>j</em>-1 = 0，要明白这点，我们需要看2.21的点(a)，点(a)说明了要去除<em>u₂</em>的必须满足<em>vⱼ</em> ∈ span(<em>v₁,...,vⱼ₋₁</em>)，即<em>u₂</em> ∈ span(<em>u₁</em>)，但我们的条件是说<em>u₁,...,uₘ</em>是线性无关的，这两点相矛盾了，所以<em>u₂</em>不能去掉。</p>
+<p>之后的步骤都非常类似，直到第m步之后，所有的<em>u</em>都被添加进去了，得到</p>
+<p><center> <em>u₁,...,uₘ,...</em> </center><br>由引论2.21可知，这里至少还能删去一个元素，但是所有的<em>u</em>都不能删除，所以这个向量组中至少有和<em>u</em>的数量一样多的<em>w</em>，即m≤n，证毕，eg2.24，eg2.25。</p>
+<p>接下来考虑子空间。按照我们直觉来说，有限维向量空间的每个子空间也应该是有限的，接下来会证明这个结论。</p>
+<h3 id="2-26-finite-dimensional-subspaces-">2.26 Finite-dimensional subspaces 有限维的子空间</h3>
+<blockquote>
+<p>Every subspace of a finite-dimensional vector space is finite-dimensional.</p>
+</blockquote>
+<p>证明如下：</p>
+<p>先假设<strong> <em>V</em> </strong>是一个有限维的向量空间，并且<strong> <em>U</em> </strong>是它的一个子空间，要证明<strong> <em>U</em> </strong>是<strong> <em>V</em> </strong>的子空间，我们同样使用多步证明的方法。</p>
+<p><strong>Step 1:</strong></p>
+<p>如果<strong> <em>U</em> </strong> = {0}，那么<strong> <em>U</em> </strong>显而易见是一个有限维的向量空间。如果<strong> <em>U</em> </strong> ≠ {0}，那么选择任意一个非零向量<em>v₁</em> ∈ <strong> <em>U</em> </strong>。</p>
+<p><strong>Step j:</strong></p>
+<p>如果<strong> <em>U</em> </strong> = span(<em>v₁,...,vⱼ₋₁</em>)，那么<strong> <em>U</em> </strong>就是一个有限维的向量空间。如果<strong> <em>U</em> </strong> ≠ span(<em>v₁,...,vⱼ₋₁</em>)，那么继续选择一个向量<em>vⱼ</em> ∈ <strong> <em>U</em> </strong>满足：</p>
+<p><center> <em>vⱼ</em> ∉ span(<em>v₁,...,vⱼ₋₁</em>) </center><br>在很多步过后，只要这个过程一直持续，那么我们就建立了一个满足这个向量组中的任意一个向量都不在之前向量组所张成的空间中的向量组。因此我们建立了一个线性无关的向量组，通过2.23，我们能知道线性无关组的长度总是小于张成空间的向量组的长度，因此这个过程一定会结束，也就证明了<strong> <em>U</em> </strong>是一个有限维的向量空间。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag"># 线性代数</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/10/13/linearalgebradoneright1b/" rel="prev" title="Linear Algebra Done Right Chapter 1.B#2">
+      <i class="fa fa-chevron-left"></i> Linear Algebra Done Right Chapter 1.B#2
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81OTYxOS8zNjA4MQ=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-2-a-span-and-linear-independence-"><span class="nav-number">1.</span> <span class="nav-text">Chapter 2.A  Span and Linear Independence 张和线性无关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-notation-list-of-vectors-"><span class="nav-number">1.1.</span> <span class="nav-text">2.2 Notation list of vectors 符号 向量列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-combinations-and-span-"><span class="nav-number">2.</span> <span class="nav-text">Linear Combinations and Span 线性组合和张</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-definition-linear-combination-"><span class="nav-number">2.1.</span> <span class="nav-text">2.3 Definition linear combination 线性组合的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-definition-span-"><span class="nav-number">2.2.</span> <span class="nav-text">2.5 Definition span 张的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-span-is-the-smallest-containing-subspace-"><span class="nav-number">2.3.</span> <span class="nav-text">2.7 Span is the smallest containing subspace 张是最小的包含子空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-definition-spans-"><span class="nav-number">2.4.</span> <span class="nav-text">2.8 Definition spans 张的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-definition-finite-dimensional-vector-space-"><span class="nav-number">2.5.</span> <span class="nav-text">2.10 Definition finite-dimensional vector space 有限维的向量空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-definition-polynomial-p-f-p-f-"><span class="nav-number">2.6.</span> <span class="nav-text">2.11 Definition polynomial,P(F) 多项式，P(F)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-definition-degree-of-a-polynomial-deg-p-deg-p"><span class="nav-number">2.7.</span> <span class="nav-text">2.12 Definition degree of a polynomial,deg p 多项式的次，deg p</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-definition-p-f-"><span class="nav-number">2.8.</span> <span class="nav-text">2.13 Definition Pₘ(F)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-15-definition-infinite-dimensional-vector-space-"><span class="nav-number">2.9.</span> <span class="nav-text">2.15 Definition infinite-dimensional vector space 无限维向量空间的定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-independence-"><span class="nav-number">3.</span> <span class="nav-text">Linear Independence 线性无关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-17-definition-linearly-independent-"><span class="nav-number">3.1.</span> <span class="nav-text">2.17 Definition linearly independent 线性无关的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-19-definition-linearly-dependent-"><span class="nav-number">3.2.</span> <span class="nav-text">2.19 Definition linearly dependent 线性相关的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-21-linear-dependence-lemma-"><span class="nav-number">3.3.</span> <span class="nav-text">2.21 Linear Dependence Lemma 线性相关引论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-23-length-of-linearly-independent-list-length-of-spanning-list-"><span class="nav-number">3.4.</span> <span class="nav-text">2.23 Length of linearly independent list ≤ length of spanning list 线性无关列表的长度小于张成列表的长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-26-finite-dimensional-subspaces-"><span class="nav-number">3.5.</span> <span class="nav-text">2.26 Finite-dimensional subspaces 有限维的子空间</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="goatf1ower1"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">goatf1ower1</p>
+  <div class="site-description" itemprop="description">"See you, either in Hell, or Communism."</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/goatf1ower1" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;goatf1ower1" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://space.bilibili.com/81099160" title="https:&#x2F;&#x2F;space.bilibili.com&#x2F;81099160" rel="noopener" target="_blank">B站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; Sat Mar 09 2024 08:00:00 GMT+0800 (GMT+08:00) – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">goatf1ower1</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">9k</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共9k字</span>
+</div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
