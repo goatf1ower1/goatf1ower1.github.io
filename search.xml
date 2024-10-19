@@ -31,6 +31,33 @@
     
     
     <entry>
+      <title>Linear Algebra Done Right Summary of Chapter 1#4</title>
+      <link href="/2024/10/19/linearalgebradonerightsum1/"/>
+      <url>/2024/10/19/linearalgebradonerightsum1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="-">第一章总结</h2><span id="more"></span><p>本章从向量空间开始介绍，定义了向量空间，并讨论了了他们的一些基本性质。</p><p>我们把从原来在实数的研究扩展到复数，并补充了一些基本性质，这些性质和实数域的性质非常相似。</p><p>然后定义了列表，也就是组的概念，我们通过这个概念定义了Rⁿ和Cⁿ，并最终用Fⁿ指代它们，接着我们又定义了Fⁿ中的一些概念，如0，加法，数乘，加法逆元等。</p><p>接着我们就正式的讨论向量空间，首先定义了向量空间中的加法和数乘，以及满足向量空间所需的一些基本性质，然后定义了向量空间中的元素向量或者叫点、实/复数向量空间，并讨论了一种特殊的向量空间Fˢ，这是一种在F域上函数的向量空间。</p><p>最后我们讨论了子空间，定义了子空间并说明满足子空间所需的条件，定义了子空间的和与直和，并讨论了相关性质，这些性质比较重要，并不难理解。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 线性代数 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linear Algebra Done Right Chapter 1.B#2</title>
       <link href="/2024/10/13/linearalgebradoneright1b/"/>
       <url>/2024/10/13/linearalgebradoneright1b/</url>
