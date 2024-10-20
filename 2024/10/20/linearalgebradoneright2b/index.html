@@ -22,20 +22,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="关于音乐——数学摇滚#1">
-<meta property="og:url" content="http://example.com/2024/03/11/%E5%85%B3%E4%BA%8E%E9%9F%B3%E4%B9%90%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E6%91%87%E6%BB%9A-1/index.html">
+  <meta name="description" content="Chapter 2.B Bases 基">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linear Algebra Done Right Chapter 2.B#6">
+<meta property="og:url" content="http://example.com/2024/10/20/linearalgebradoneright2b/index.html">
 <meta property="og:site_name" content="goatf1ower1的博客">
+<meta property="og:description" content="Chapter 2.B Bases 基">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic1.zhimg.com/80/6273e98fee8f21c5b3f04992c673a20c_1440w.webp?source=1def8aca">
-<meta property="article:published_time" content="2024-03-11T04:42:57.000Z">
-<meta property="article:modified_time" content="2024-10-10T13:29:56.592Z">
+<meta property="article:published_time" content="2024-10-20T07:52:00.000Z">
+<meta property="article:modified_time" content="2024-10-20T07:52:39.990Z">
 <meta property="article:author" content="goatf1ower1">
-<meta property="article:tag" content="音乐">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="线性代数">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pic1.zhimg.com/80/6273e98fee8f21c5b3f04992c673a20c_1440w.webp?source=1def8aca">
 
-<link rel="canonical" href="http://example.com/2024/03/11/%E5%85%B3%E4%BA%8E%E9%9F%B3%E4%B9%90%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E6%91%87%E6%BB%9A-1/">
+<link rel="canonical" href="http://example.com/2024/10/20/linearalgebradoneright2b/">
 
 
 <script id="page-configurations">
@@ -48,7 +49,7 @@
   };
 </script>
 
-  <title>关于音乐——数学摇滚#1 | goatf1ower1的博客</title>
+  <title>Linear Algebra Done Right Chapter 2.B#6 | goatf1ower1的博客</title>
   
 
 
@@ -197,7 +198,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/11/%E5%85%B3%E4%BA%8E%E9%9F%B3%E4%B9%90%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E6%91%87%E6%BB%9A-1/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/20/linearalgebradoneright2b/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -210,7 +211,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          关于音乐——数学摇滚#1
+          Linear Algebra Done Right Chapter 2.B#6
         </h1>
 
         <div class="post-meta">
@@ -221,23 +222,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2024-03-11 12:42:57" itemprop="dateCreated datePublished" datetime="2024-03-11T12:42:57+08:00">2024-03-11</time>
+              <time title="创建时间：2024-10-20 15:52:00 / 修改时间：15:52:39" itemprop="dateCreated datePublished" datetime="2024-10-20T15:52:00+08:00">2024-10-20</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-10 21:29:56" itemprop="dateModified" datetime="2024-10-10T21:29:56+08:00">2024-10-10</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E4%B9%90/" itemprop="url" rel="index"><span itemprop="name">音乐</span></a>
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
                 </span>
             </span>
 
@@ -254,14 +249,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>342</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>7 分钟</span>
             </span>
 
         </div>
@@ -273,26 +268,69 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://pic1.zhimg.com/80/6273e98fee8f21c5b3f04992c673a20c_1440w.webp?source=1def8aca" alt="toe.jpg"></p>
+        <h2 id="chapter-2-b-bases-">Chapter 2.B Bases 基</h2>
 
 <span id="more"></span>
 
-<p>数学摇滚（Math Rock）最大的特点就是通过奇数拍和偶数拍的交叠，亦或是重拍的移位来构造出丰富的变化，在不同乐器的演奏下，将整首乐曲铺得很满，让人听起来感觉紧凑而但不至于散乱。</p>
-<p>一首好的数学摇滚是可以让人沉迷在拍子的变化和奇妙的听感上的。在繁复的节奏中，作者往往会用一些小技巧或是细微的变化让歌曲不会过于无聊，搭配上一条悦耳的旋律线，即可让人想无限单曲循环。</p>
-<p>当然，相比于一些简单的歌曲，想要完美跟得上数学摇滚的节奏会用很多的精力，特别是一首崭新的曲子，但去听一首数学摇滚完全不需要数拍子，只是听着音符流动，感受每个鼓点爆发出的生命力，便足以让人沉迷其中。</p>
-<hr>
-<h2>推荐歌曲</h2>
-<ul>
-<li>グッドバイ(Goodbye) -- toe</li>
-<li>サニーボーイ・ラプソディ -- toe</li>
-<li>Never Meant -- American Football</li>
-<li>Finger -- 大象体操</li>
-<li>cakewalk escape -- A Picture Of Her</li>
-<li>8films -- 宇宙コンビニ</li>
-<li>拍動 -- 水中スピカ</li>
-<li>potage -- tricot</li>
-<li>电动少女 -- Chinese Football</li>
-<li>sugoi kawaii JYOCHO -- JYOCHO</li></ul>
+<p>上一节中，我们讨论了线性无关组和张成向量空间组以及一些引论，现在将它们合并在一起组成一个新的的概念————基。</p>
+<h3 id="2-27-definition-basis-">2.27 Definition <em>basis</em> 基的定义</h3>
+<blockquote>
+<p>A <strong> <em>basis</em> </strong> of <strong> <em>V</em> </strong> is a list of vectors in <strong> <em>V</em> </strong> that is linearly independent and spans <strong> <em>V</em> </strong>.</p>
+</blockquote>
+<p>eg2.28</p>
+<h3 id="2-29-criterion-for-basis-">2.29 Criterion for basis 基的标准</h3>
+<blockquote>
+<p>A list <em>v₁,...,vₙ</em> of vectors in <strong> <em>V</em> </strong> is a basis of <strong> <em>V</em> </strong> if and only if every <em>v</em> ∈ <strong> <em>V</em> </strong> can be written uniquely in the form</p>
+<p> <strong>2.30 </strong><center> <em>v</em> = <em>a₁v₁+···+aₙvₙ</em> </center><br> where <em>a₁,...,aₙ</em> ∈ <strong>F</strong>.</p>
+</blockquote>
+<p>为了证明这个标准，我们需要双向推导。</p>
+<p>证明如下：</p>
+<p>首先是从线性无关到唯一性，假设<em>v₁,...,vₙ</em>是<strong> <em>V</em> </strong>的一组基，并让<em>v</em> ∈ <strong> <em>V</em> </strong>。因为<em>v₁,...,vₙ</em>张成<strong> <em>V</em> </strong>，所以有：</p>
+<p><center> <em>v</em> = <em>a₁v₁+···+aₙvₙ</em>. </center><br>为了表示唯一性，我们假设有另一组系数：</p>
+<p><center> <em>v</em> = <em>c₁v₁+···+cₙvₙ</em>. </center><br>两式相减，可得：</p>
+<p><center> 0 = <em>(a₁-c)₁v₁+···+(aₙ-cₙ)vₙ</em>. </center><br>这表明了每个<em>aⱼ-cⱼ</em>都是为0的(因为线性无关)，也就说明每个<em>aⱼ=cⱼ</em>，这也就说明了唯一性。</p>
+<p>然后是唯一性到线性无关，我们先假设每一个<em>v</em> ∈ <strong> <em>V</em> </strong>都可以被写成2.30这种形式：</p>
+<p><center> <em>v</em> = <em>a₁v₁+···+aₙvₙ</em> </center><br>显然这说明<em>v₁,...,vₙ</em>张成<strong> <em>V</em> </strong>。为了证明线性无关，我们假设<em>a₁,...,aₙ</em> ∈ <strong>F</strong>满足以下式子：</p>
+<p><center> 0 = <em>a₁v₁+···+aₙvₙ</em> </center><br>因为唯一性，我们可以从2.30这个式子中得到<em>a₁</em> =···= <em>aₙ</em> = 0。由此线性无关得证。</p>
+<p>向量空间的一个张成组可能并不是这个空间的一组基，因为它可能不满足线性无关。接下来的推论说明了给定任意一个张成组中的其中一些向量(也可能没有)可以被去除从而保证线性无关，同时张成的向量空间不会改变。</p>
+<h3 id="2-31-spanning-list-contains-a-basis-">2.31 Spanning list contains a basis 张成组包含一组基</h3>
+<blockquote>
+<p>Every spanning list in a vector space can be reduced to a basis of the vector space.</p>
+</blockquote>
+<p>证明如下：假设<em>v₁,...,vₙ</em>张成<strong> <em>V</em> </strong>，我们想要去除某些向量从而让它变成<strong> <em>V</em> </strong>的一组基，可以从多部证明开始：</p>
+<p>首先让<strong> <em>B</em> </strong>等同 <em>v₁,...,vₙ</em></p>
+<p><strong>Step 1:</strong></p>
+<p>如果<em>v₁</em> = 0，从<strong> <em>B</em> </strong>中删去它。如果<em>v₁</em> ≠ 0，保持<strong> <em>B</em> </strong>不变。</p>
+<p><strong>Step j:</strong></p>
+<p>如果<em>vⱼ</em>在span(<em>v₁,...,vⱼ₋₁</em>)中，就从<strong> <em>B</em> </strong>中删去它。相反，那就保持<strong> <em>B</em> </strong>不变。</p>
+<p>在进行一定步后，我们得到了最终的<strong> <em>B</em> </strong>，由于我们一开始的假设，这个<strong> <em>B</em> </strong>能够张成<strong> <em>V</em> </strong>，同时我们去除了一些合适的向量，这些向量能够被它之前的向量通过线性组合表示出来。通过2.21能确保<strong> <em>B</em> </strong>是线性无关的。因此<strong> <em>B</em> </strong>是<strong> <em>V</em> </strong>的一组基。</p>
+<p>下面是基于上面的一个简单推论，这个推论告诉了我们每一个有限维的向量空间都有一组基。</p>
+<h3 id="2-32-basis-of-finite-dimensional-vector-space-">2.32 Basis of finite-dimensional vector space 有限维向量空间的基</h3>
+<blockquote>
+<p>Every finite-dimensional vector space has a basis.</p>
+</blockquote>
+<p>这个推论的证明非常简单，2.31已经告诉我们每个张成组都能够被简化为一组基，自然而然也就证明了这点。</p>
+<p>下面的一个推论在某种意义上是2.31的另一面。给了一个线性无关组，我们同样可以扩充它，来保证它依然是线性无关的但是也张成了一个空间。</p>
+<h3 id="2-33-linearly-independent-list-extends-to-a-basis-">2.33 Linearly independent list extends to a basis 线性无关组扩充为一组基</h3>
+<blockquote>
+<p>Every linearly independent list of vectors in a finite-dimensional vector space can be extended to a basis of the vector space.</p>
+</blockquote>
+<p>证明如下：</p>
+<p>我们假设<em>u₁,..,uₘ</em>在一个有限维向量空间<strong> <em>V</em> </strong>上是线性无关的，同时让<em>w₁,...,wₘ</em>成为<strong> <em>V</em> </strong>的一组基。因此得到一组新的向量：</p>
+<p><center> <em>u₁,...,uₘ,w₁,...,wₘ</em> </center><br>也能张成<strong> <em>V</em> </strong>。通过和2.31证明相同的步骤来去除这组向量中的元素来让它成为<strong> <em>V</em> </strong>的一组基，这会得到一组包含<em>u₁,..,uₘ</em>(所有的<em>u</em>都不会被删除，因为<em>u₁,...,uₘ</em>是线性无关的)和一些<em>w</em>的向量组。由此得证。</p>
+<h3 id="2-34-every-subspace-of-v-is-part-of-direct-sum-equal-to-v-v-v-">2.34 Every subspace of <em>V</em> is part of direct sum equal to <em>V</em> 每个V的子空间都是等于V的直和的一部分</h3>
+<blockquote>
+<p>Suppose <strong> <em>V</em> </strong> is finite-dimensional and <strong> <em>U</em> </strong> is a subspace of <strong> <em>V</em> </strong>. Then there is a subspace <strong> <em>W</em> </strong> of <strong> <em>V</em> </strong> such that <strong> <em>V</em> </strong> = <strong> <em>U</em> </strong> ⊕ <strong> <em>W</em> </strong>.</p>
+</blockquote>
+<p>证明如下：</p>
+<p>因为<strong> <em>V</em> </strong>是有限维的，所以<strong> <em>U</em> </strong>也是。接下来取<strong> <em>U</em> </strong>中的一组基<em>u₁,...,uₘ</em>，显然这组基在<strong> <em>V</em> </strong>中是线性无关的。因此这组基可以扩充为<em>u₁,...,uₘ,w₁,...,wₘ</em>，同时令<strong> <em>W</em> </strong> = span(<em>w₁,..,wₘ</em>)。</p>
+<p>要证明<strong> <em>V</em> </strong> = <strong> <em>U</em> </strong> ⊕ <strong> <em>W</em> </strong>，只需证明<strong> <em>V</em> </strong> = <strong> <em>U</em> </strong> + <strong> <em>W</em> </strong>的同时<strong> <em>U</em> </strong> ∩ <strong> <em>W</em> </strong> = {0}。</p>
+<p>要证明第一个等式，先假设<em>v</em> ∈ <strong> <em>V</em> </strong>。由于上面的一组基张成<strong> <em>V</em> </strong>，所以存在两组属于F的系数满足：</p>
+<p><center> <em>v</em> = <em>a₁u₁+···+aₘuₘ+b₁w₁+···+bₘwₘ</em>. </center><br>也就是说，<em>v</em> = <em>u+w</em>。所以<em>v</em> ∈ <strong> <em>U</em> </strong> + <strong> <em>W</em> </strong>,因此<strong> <em>V</em> </strong> = <strong> <em>U</em> </strong> + <strong> <em>W</em> </strong>得证。</p>
+<p>要证明第二个等式，先假设<em>v</em> ∈ <strong> <em>U</em> </strong> ∩ <strong> <em>W</em> </strong>，这里依然存在两组系数满足：</p>
+<p><center> <em>v</em> = <em>a₁u₁+···+aₘuₘ = b₁w₁+···+bₘwₘ</em>. </center><br>因此有：</p>
+<p><center> <em>a₁u₁+···+aₘuₘ-b₁w₁-···-bₘwₘ</em> = 0. </center><br>由于两个向量组是线性无关的，所以这说明<em>a₁ =···= aₘ = b₁ =···= bₘ = </em>0。也就说明<em>v</em> = 0，等式二得证。</p>
+
     </div>
 
     
@@ -301,7 +339,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E9%9F%B3%E4%B9%90/" rel="tag"># 音乐</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag"># 线性代数</a>
           </div>
 
         
@@ -309,11 +348,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2024/10/10/linearalgebradoneright1c/" rel="next" title="Linear Algebra Done Right Chapter 1.C#3">
-      Linear Algebra Done Right Chapter 1.C#3 <i class="fa fa-chevron-right"></i>
+    <a href="/2024/10/19/linearalgebradoneright2a/" rel="prev" title="Linear Algebra Done Right Chapter 2.A#5">
+      <i class="fa fa-chevron-left"></i> Linear Algebra Done Right Chapter 2.A#5
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -377,7 +416,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">推荐歌曲</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-2-b-bases-"><span class="nav-number">1.</span> <span class="nav-text">Chapter 2.B Bases 基</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-27-definition-basis-"><span class="nav-number">1.1.</span> <span class="nav-text">2.27 Definition basis 基的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-29-criterion-for-basis-"><span class="nav-number">1.2.</span> <span class="nav-text">2.29 Criterion for basis 基的标准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-31-spanning-list-contains-a-basis-"><span class="nav-number">1.3.</span> <span class="nav-text">2.31 Spanning list contains a basis 张成组包含一组基</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-32-basis-of-finite-dimensional-vector-space-"><span class="nav-number">1.4.</span> <span class="nav-text">2.32 Basis of finite-dimensional vector space 有限维向量空间的基</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-33-linearly-independent-list-extends-to-a-basis-"><span class="nav-number">1.5.</span> <span class="nav-text">2.33 Linearly independent list extends to a basis 线性无关组扩充为一组基</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-34-every-subspace-of-v-is-part-of-direct-sum-equal-to-v-v-v-"><span class="nav-number">1.6.</span> <span class="nav-text">2.34 Every subspace of V is part of direct sum equal to V 每个V的子空间都是等于V的直和的一部分</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

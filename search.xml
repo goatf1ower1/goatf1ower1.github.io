@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Linear Algebra Done Right Chapter 2.B#6</title>
+      <link href="/2024/10/20/linearalgebradoneright2b/"/>
+      <url>/2024/10/20/linearalgebradoneright2b/</url>
+      
+        <content type="html"><![CDATA[<h2 id="chapter-2-b-bases-">Chapter 2.B Bases 基</h2><span id="more"></span><p>上一节中，我们讨论了线性无关组和张成向量空间组以及一些引论，现在将它们合并在一起组成一个新的的概念————基。</p><h3 id="2-27-definition-basis-">2.27 Definition <em>basis</em> 基的定义</h3><blockquote><p>A <strong> <em>basis</em> </strong> of <strong> <em>V</em> </strong> is a list of vectors in <strong> <em>V</em> </strong> that is linearly independent and spans <strong> <em>V</em> </strong>.</p></blockquote><p>eg2.28</p><h3 id="2-29-criterion-for-basis-">2.29 Criterion for basis 基的标准</h3><blockquote><p>A list <em>v₁,...,vₙ</em> of vectors in <strong> <em>V</em> </strong> is a basis of <strong> <em>V</em> </strong> if and only if every <em>v</em> ∈ <strong> <em>V</em> </strong> can be written uniquely in the form</p><p> <strong>2.30 </strong><center> <em>v</em> = <em>a₁v₁+···+aₙvₙ</em> </center><br> where <em>a₁,...,aₙ</em> ∈ <strong>F</strong>.</p></blockquote><p>为了证明这个标准，我们需要双向推导。</p><p>证明如下：</p><p>首先是从线性无关到唯一性，假设<em>v₁,...,vₙ</em>是<strong> <em>V</em> </strong>的一组基，并让<em>v</em> ∈ <strong> <em>V</em> </strong>。因为<em>v₁,...,vₙ</em>张成<strong> <em>V</em> </strong>，所以有：</p><p><center> <em>v</em> = <em>a₁v₁+···+aₙvₙ</em>. </center><br>为了表示唯一性，我们假设有另一组系数：</p><p><center> <em>v</em> = <em>c₁v₁+···+cₙvₙ</em>. </center><br>两式相减，可得：</p><p><center> 0 = <em>(a₁-c)₁v₁+···+(aₙ-cₙ)vₙ</em>. </center><br>这表明了每个<em>aⱼ-cⱼ</em>都是为0的(因为线性无关)，也就说明每个<em>aⱼ=cⱼ</em>，这也就说明了唯一性。</p><p>然后是唯一性到线性无关，我们先假设每一个<em>v</em> ∈ <strong> <em>V</em> </strong>都可以被写成2.30这种形式：</p><p><center> <em>v</em> = <em>a₁v₁+···+aₙvₙ</em> </center><br>显然这说明<em>v₁,...,vₙ</em>张成<strong> <em>V</em> </strong>。为了证明线性无关，我们假设<em>a₁,...,aₙ</em> ∈ <strong>F</strong>满足以下式子：</p><p><center> 0 = <em>a₁v₁+···+aₙvₙ</em> </center><br>因为唯一性，我们可以从2.30这个式子中得到<em>a₁</em> =···= <em>aₙ</em> = 0。由此线性无关得证。</p><p>向量空间的一个张成组可能并不是这个空间的一组基，因为它可能不满足线性无关。接下来的推论说明了给定任意一个张成组中的其中一些向量(也可能没有)可以被去除从而保证线性无关，同时张成的向量空间不会改变。</p><h3 id="2-31-spanning-list-contains-a-basis-">2.31 Spanning list contains a basis 张成组包含一组基</h3><blockquote><p>Every spanning list in a vector space can be reduced to a basis of the vector space.</p></blockquote><p>证明如下：假设<em>v₁,...,vₙ</em>张成<strong> <em>V</em> </strong>，我们想要去除某些向量从而让它变成<strong> <em>V</em> </strong>的一组基，可以从多部证明开始：</p><p>首先让<strong> <em>B</em> </strong>等同 <em>v₁,...,vₙ</em></p><p><strong>Step 1:</strong></p><p>如果<em>v₁</em> = 0，从<strong> <em>B</em> </strong>中删去它。如果<em>v₁</em> ≠ 0，保持<strong> <em>B</em> </strong>不变。</p><p><strong>Step j:</strong></p><p>如果<em>vⱼ</em>在span(<em>v₁,...,vⱼ₋₁</em>)中，就从<strong> <em>B</em> </strong>中删去它。相反，那就保持<strong> <em>B</em> </strong>不变。</p><p>在进行一定步后，我们得到了最终的<strong> <em>B</em> </strong>，由于我们一开始的假设，这个<strong> <em>B</em> </strong>能够张成<strong> <em>V</em> </strong>，同时我们去除了一些合适的向量，这些向量能够被它之前的向量通过线性组合表示出来。通过2.21能确保<strong> <em>B</em> </strong>是线性无关的。因此<strong> <em>B</em> </strong>是<strong> <em>V</em> </strong>的一组基。</p><p>下面是基于上面的一个简单推论，这个推论告诉了我们每一个有限维的向量空间都有一组基。</p><h3 id="2-32-basis-of-finite-dimensional-vector-space-">2.32 Basis of finite-dimensional vector space 有限维向量空间的基</h3><blockquote><p>Every finite-dimensional vector space has a basis.</p></blockquote><p>这个推论的证明非常简单，2.31已经告诉我们每个张成组都能够被简化为一组基，自然而然也就证明了这点。</p><p>下面的一个推论在某种意义上是2.31的另一面。给了一个线性无关组，我们同样可以扩充它，来保证它依然是线性无关的但是也张成了一个空间。</p><h3 id="2-33-linearly-independent-list-extends-to-a-basis-">2.33 Linearly independent list extends to a basis 线性无关组扩充为一组基</h3><blockquote><p>Every linearly independent list of vectors in a finite-dimensional vector space can be extended to a basis of the vector space.</p></blockquote><p>证明如下：</p><p>我们假设<em>u₁,..,uₘ</em>在一个有限维向量空间<strong> <em>V</em> </strong>上是线性无关的，同时让<em>w₁,...,wₘ</em>成为<strong> <em>V</em> </strong>的一组基。因此得到一组新的向量：</p><p><center> <em>u₁,...,uₘ,w₁,...,wₘ</em> </center><br>也能张成<strong> <em>V</em> </strong>。通过和2.31证明相同的步骤来去除这组向量中的元素来让它成为<strong> <em>V</em> </strong>的一组基，这会得到一组包含<em>u₁,..,uₘ</em>(所有的<em>u</em>都不会被删除，因为<em>u₁,...,uₘ</em>是线性无关的)和一些<em>w</em>的向量组。由此得证。</p><h3 id="2-34-every-subspace-of-v-is-part-of-direct-sum-equal-to-v-v-v-">2.34 Every subspace of <em>V</em> is part of direct sum equal to <em>V</em> 每个V的子空间都是等于V的直和的一部分</h3><blockquote><p>Suppose <strong> <em>V</em> </strong> is finite-dimensional and <strong> <em>U</em> </strong> is a subspace of <strong> <em>V</em> </strong>. Then there is a subspace <strong> <em>W</em> </strong> of <strong> <em>V</em> </strong> such that <strong> <em>V</em> </strong> = <strong> <em>U</em> </strong> ⊕ <strong> <em>W</em> </strong>.</p></blockquote><p>证明如下：</p><p>因为<strong> <em>V</em> </strong>是有限维的，所以<strong> <em>U</em> </strong>也是。接下来取<strong> <em>U</em> </strong>中的一组基<em>u₁,...,uₘ</em>，显然这组基在<strong> <em>V</em> </strong>中是线性无关的。因此这组基可以扩充为<em>u₁,...,uₘ,w₁,...,wₘ</em>，同时令<strong> <em>W</em> </strong> = span(<em>w₁,..,wₘ</em>)。</p><p>要证明<strong> <em>V</em> </strong> = <strong> <em>U</em> </strong> ⊕ <strong> <em>W</em> </strong>，只需证明<strong> <em>V</em> </strong> = <strong> <em>U</em> </strong> + <strong> <em>W</em> </strong>的同时<strong> <em>U</em> </strong> ∩ <strong> <em>W</em> </strong> = {0}。</p><p>要证明第一个等式，先假设<em>v</em> ∈ <strong> <em>V</em> </strong>。由于上面的一组基张成<strong> <em>V</em> </strong>，所以存在两组属于F的系数满足：</p><p><center> <em>v</em> = <em>a₁u₁+···+aₘuₘ+b₁w₁+···+bₘwₘ</em>. </center><br>也就是说，<em>v</em> = <em>u+w</em>。所以<em>v</em> ∈ <strong> <em>U</em> </strong> + <strong> <em>W</em> </strong>,因此<strong> <em>V</em> </strong> = <strong> <em>U</em> </strong> + <strong> <em>W</em> </strong>得证。</p><p>要证明第二个等式，先假设<em>v</em> ∈ <strong> <em>U</em> </strong> ∩ <strong> <em>W</em> </strong>，这里依然存在两组系数满足：</p><p><center> <em>v</em> = <em>a₁u₁+···+aₘuₘ = b₁w₁+···+bₘwₘ</em>. </center><br>因此有：</p><p><center> <em>a₁u₁+···+aₘuₘ-b₁w₁-···-bₘwₘ</em> = 0. </center><br>由于两个向量组是线性无关的，所以这说明<em>a₁ =···= aₘ = b₁ =···= bₘ = </em>0。也就说明<em>v</em> = 0，等式二得证。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 线性代数 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linear Algebra Done Right Chapter 2.A#5</title>
       <link href="/2024/10/19/linearalgebradoneright2a/"/>
       <url>/2024/10/19/linearalgebradoneright2a/</url>
